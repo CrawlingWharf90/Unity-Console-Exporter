@@ -1,0 +1,16 @@
+{
+  "name": "CrawlingWharf90.ConsoleExporter.Editor",
+  "rootNamespace": "CrawlingWharf90.ConsoleExporter",
+  "references": [],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

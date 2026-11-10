@@ -1,0 +1,30 @@
+name: Validate UPM package
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate package manifest and assembly definition
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const asm = JSON.parse(fs.readFileSync('Editor/CrawlingWharf90.ConsoleExporter.Editor.asmdef', 'utf8'));
+          if (pkg.name !== 'com.crawlingwharf90.console-exporter') throw new Error('Unexpected package name');
+          if (!/^\d+\.\d+\.\d+([+-].+)?$/.test(pkg.version)) throw new Error('Package version is not SemVer-like');
+          if (!asm.includePlatforms || !asm.includePlatforms.includes('Editor')) throw new Error('Assembly must be Editor-only');
+          if (!fs.existsSync('LICENSE.md')) throw new Error('LICENSE.md is missing');
+          const scripts = fs.readdirSync('Editor').filter(name => name.endsWith('.cs'));
+          if (scripts.length !== 7) throw new Error(`Expected 7 C# files, found ${scripts.length}`);
+          console.log(`Validated ${pkg.name}@${pkg.version} with ${scripts.length} Editor scripts.`);
+          NODE
