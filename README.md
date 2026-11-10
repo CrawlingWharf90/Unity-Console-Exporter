@@ -27,7 +27,7 @@ An Editor-only Unity package that adds an enhanced Console Exporter with filteri
 3. Paste the repository URL, pinned to a release tag:
 
    ```text
-   https://github.com/CrawlingWharf90/Unity-Console-Exporter.git#v1.0.0
+   https://github.com/CrawlingWharf90/Unity-Console-Exporter.git#v1.0.1
    ```
 
 4. Select **Add**.

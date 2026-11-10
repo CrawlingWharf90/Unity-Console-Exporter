@@ -1,6 +1,6 @@
 {
   "name": "com.crawlingwharf90.console-exporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Console Exporter",
   "description": "An enhanced Unity Editor console exporter with filtering, selection, presets, and TXT, JSON, CSV, and XML output.",
   "unity": "2021.2",
